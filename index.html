@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery - Tic Tak Toe</title>
+    <link href="styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container header-container">
+      <h1>Tic-Tak-Toe</h1>
+      <h2 id="winner"></h2>
+      <h2 id="rulesBtn">The Rules <i id="downCaret">&#9660;</i></a></h2>
+    </div>
+    <div class="rules-container">
+      <div>
+        <h2 id="rules"><a name="rules">Rules:</a></h2>
+        <ul>
+          <li>Players alternate placing X's/O's on the board<ul>
+            <li>X goes first</li>
+          </ul></li>
+          <li>First one to get 3 X's/O's in a row wins<ul>
+            <li>This includes up/down, left/right, and diagonal</li>
+          </ul></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container" id="game">
+      <div class="row flex-item" id="row1">
+        <div class="box flex-item" id="box1"></div>
+        <div class="box flex-item" id="box2"></div>
+        <div class="box flex-item" id="box3"></div>
+      </div>
+      <div class="row flex-item" id="row2">
+        <div class="box flex-item" id="box4"></div>
+        <div class="box flex-item" id="box5"></div>
+        <div class="box flex-item" id="box6"></div>
+      </div>
+      <div class="row flex-item" id="row3">
+        <div class="box flex-item" id="box7"></div>
+        <div class="box flex-item" id="box8"></div>
+        <div class="box flex-item" id="box9"></div>
+      </div>
+    </div>
+    <footer class="container footer-container">
+      <h2>Thanks for checking out my jQuery Tic-Tak-Toe game</h2>
+    </footer>
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+  </body>
+</html>
