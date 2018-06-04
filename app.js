@@ -116,6 +116,8 @@ const tic = function(count, boxIndex) {
     // alert the players there has been a winner
     alert('There has been a winner');
     counter += 1;
+	// Remove CSS hover color
+	$boxes.css('background-color', 'initial');
   }
   // And if all tiles have been filled...
   else if ( counter === 9 ) {
@@ -126,6 +128,8 @@ const tic = function(count, boxIndex) {
       // and print out the "no one wins" message to the page
       $winnerMessage.text('Game Over - No one wins');
       counter += 1;
+	  // Remove CSS hover color
+	  $boxes.css('background-color', 'initial');
     }
   }
 };
