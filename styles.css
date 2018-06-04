@@ -28,6 +28,9 @@ span::selection {
   min-height: 20vw;
   font-size: 5vw;
 }
+.box:hover {
+  background-color: aliceblue;
+}
 .container {
   display: flex;
   flex-flow: row nowrap;
