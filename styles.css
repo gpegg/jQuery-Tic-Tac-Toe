@@ -28,7 +28,7 @@ span::selection {
   min-height: 20vw;
   font-size: 5vw;
 }
-.box:hover {
+.hover:hover {
   background-color: aliceblue;
 }
 .container {
