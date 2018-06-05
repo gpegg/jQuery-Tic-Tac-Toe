@@ -15,6 +15,8 @@ let counter = 0;
 winner = false;
 // define an array filled with false, which will be used to stop from changing an X to an O and viceversa.
 const checked = [false,false,false,false,false,false,false,false,false];
+// array of boxes defined via id
+const boxids = [$box1, $box2, $box3, $box4, $box5, $box6, $box7, $box8, $box9];
 
 // Define function 'tic' and have it accept 2 parameters -> count keeps track of the number of boxes checked and boxIndex is the box number
 const tic = function(count, boxIndex) {
@@ -182,8 +184,9 @@ const tic = function(count, boxIndex) {
     alert('There has been a winner');
 	// add one to the counter so nothing else can happen
     counter += 1;
-	$boxes.each(function(index) {
-		this.removeClass('hover');
+	// Remove :hover psuedo class for after game
+	$.each($boxes, function(i, v) {
+		boxids[i].removeClass('hover');
 	});
   }
   // And if all tiles have been filled...
@@ -196,8 +199,9 @@ const tic = function(count, boxIndex) {
       $winnerMessage.text('Game Over - No one wins');
 	  // add one to the counter so nothing else can happen
       counter += 1;
-	  $boxes.each(function(index) {
-		this.removeClass('hover');
+	  // Remove :hover psuedo class for after game
+	  $.each($boxes, function(i, v) {
+		boxids[i].removeClass('hover');
 	  });
     }
   }
