@@ -13,111 +13,178 @@ const $o = '<span class="O">O</span>';
 let counter = 0;
 // Define a variable "winner" - set to false - if set to true, game is over.
 winner = false;
-// define an array filled with truth, which will be used to stop from changing an X to an O and viceversa.
-const array = [true,true,true,true,true,true,true,true,true];
+// define an array filled with false, which will be used to stop from changing an X to an O and viceversa.
+const checked = [false,false,false,false,false,false,false,false,false];
 
-// The function for the game
+// Define function 'tic' and have it accept 2 parameters -> count keeps track of the number of boxes checked and boxIndex is the box number
 const tic = function(count, boxIndex) {
-  if (event.target == $boxes[boxIndex] && array[boxIndex] === true) {
+	// if the target of the (click) event is the correct box AND the box has not been checked...
+  if (event.target == $boxes[boxIndex] && checked[boxIndex] === false) {
+	// if the count is at 0 or the count is even
     if ( count === 0 || count % 2 === 0 ) {
+	  // The target of the event (the box clicked) becomes an 'X'
       $(event.target).html($x);
+	  // add to the count
       count += 1;
+	// else (if the count does not equal 0 or an even number)
     } else {
+	  // The target of the event (the box clicked) becomes an 'X'
       $(event.target).html($o);
+	  // add to the count
       count += 1;
     }
+	// set the counter for equal to count for use outside of the function
     counter = count;
-    array[boxIndex] = false;
+	// set the array object with the index corresponding to the box number to true so it cannot be checked again
+    checked[boxIndex] = true;
   }
+  // if the first row is filled with 'X' or 'O'...
   if (($box1.html() === $x && $box2.html() === $x && $box3.html() === $x) || ($box1.html() === $o && $box2.html() === $o && $box3.html() === $o)) {
+	// set winner to true
     winner = true;
+	// set the color of the winning row to green to indicate the winning row
     $row1.css('background-color', 'rgba(0,255,0,0.5)');
+	// if the winner is 'X' (checking one of the winning boxes will suffice)
     if ($box1.html() === $x) {
+	  // set the winning text to indicate 'X' has won
       $winnerMessage.text("X Wins!");
+	// else if 'X' did not win...
     } else {
+	  // set the winning text to indicate 'O' has won
       $winnerMessage.text("O Wins!");
     }
   }
+  // if the second row is filled with 'X' or 'O'...
   if (($box4.html() === $x && $box5.html() === $x && $box6.html() === $x) || ($box4.html() === $o && $box5.html() === $o && $box6.html() === $o)) {
+    // set winner to true
     winner = true;
+	// set the color of the winning row to green to indicate the winning row
     $row2.css('background-color', 'rgba(0,255,0,0.5)');
+	// if the winner is 'X' (checking one of the winning boxes will suffice)
     if ($box4.html() === $x) {
+	  // set the winning text to indicate 'X' has won
       $winnerMessage.text("X Wins!");
+	// else if 'X' did not win...
     } else {
+	  // set the winning text to indicate 'O' has won
       $winnerMessage.text("O Wins!");
     }
   }
+  // if the third row is filled with 'X' or 'O'...
   if (($box7.html() === $x && $box8.html() === $x && $box9.html() === $x) || ($box7.html() === $o && $box8.html() === $o && $box9.html() === $o)) {
+    // set winner to true
     winner = true;
+	// set the color of the winning row to green to indicate the winning row
     $row3.css('background-color', 'rgba(0,255,0,0.5)');
+	// if the winner is 'X' (checking one of the winning boxes will suffice)
     if ($box7.html() === $x) {
+	  // set the winning text to indicate 'X' has won
       $winnerMessage.text("X Wins!");
+	// else if 'X' did not win...
     } else {
+	  // set the winning text to indicate 'O' has won
       $winnerMessage.text("O Wins!");
     }
   }
+  // if the left to right diagonal is filled with 'X' or 'O'...
   if (($box1.html() === $x && $box5.html() === $x && $box9.html() === $x) || ($box1.html() === $o && $box5.html() === $o && $box9.html() === $o)) {
+    // set winner to true
     winner = true;
+	// set the color of the winning row to green to indicate the winning row
     $box1.css('background-color', 'rgba(0,255,0,0.5)');
     $box5.css('background-color', 'rgba(0,255,0,0.5)');
     $box9.css('background-color', 'rgba(0,255,0,0.5)');
+	// if the winner is 'X' (checking one of the winning boxes will suffice)
     if ($box1.html() === $x) {
+      // set the winning text to indicate 'X' has won
       $winnerMessage.text("X Wins!");
+	// else if 'X' did not win...
     } else {
+	  // set the winning text to indicate 'O' has won
       $winnerMessage.text("O Wins!");
     }
   }
+  // if the right to left diagonal is filled with 'X' or 'O'...
   if (($box7.html() === $x && $box5.html() === $x && $box3.html() === $x) || ($box7.html() === $o && $box5.html() === $o && $box3.html() === $o)) {
+    // set winner to true
     winner = true;
+	// set the color of the winning row to green to indicate the winning row
     $box7.css('background-color', 'rgba(0,255,0,0.5)');
     $box5.css('background-color', 'rgba(0,255,0,0.5)');
     $box3.css('background-color', 'rgba(0,255,0,0.5)');
+	// if the winner is 'X' (checking one of the winning boxes will suffice)
     if ($box7.html() === $x) {
+      // set the winning text to indicate 'X' has won
       $winnerMessage.text("X Wins!");
+	// else if 'X' did not win...
     } else {
+	  // set the winning text to indicate 'O' has won
       $winnerMessage.text("O Wins!");
     }
   }
+  // if the first column is filled with 'X' or 'O'...
   if (($box1.html() === $x && $box4.html() === $x && $box7.html() === $x) || ($box1.html() === $o && $box4.html() === $o && $box7.html() === $o)) {
+    // set winner to true
     winner = true;
+	// set the color of the winning row to green to indicate the winning row
     $box1.css('background-color', 'rgba(0,255,0,0.5)');
     $box4.css('background-color', 'rgba(0,255,0,0.5)');
     $box7.css('background-color', 'rgba(0,255,0,0.5)');
+	// if the winner is 'X' (checking one of the winning boxes will suffice)
     if ($box7.html() === $x) {
+      // set the winning text to indicate 'X' has won
       $winnerMessage.text("X Wins!");
+	// else if 'X' did not win...
     } else {
+	  // set the winning text to indicate 'O' has won
       $winnerMessage.text("O Wins!");
     }
   }
+  // if the second column is filled with 'X' or 'O'...
   if (($box2.html() === $x && $box5.html() === $x && $box8.html() === $x) || ($box2.html() === $o && $box5.html() === $o && $box8.html() === $o)) {
+    // set winner to true
     winner = true;
+	// set the color of the winning row to green to indicate the winning row
     $box2.css('background-color', 'rgba(0,255,0,0.5)');
     $box5.css('background-color', 'rgba(0,255,0,0.5)');
     $box8.css('background-color', 'rgba(0,255,0,0.5)');
+	// if the winner is 'X' (checking one of the winning boxes will suffice)
     if ($box2.html() === $x) {
+      // set the winning text to indicate 'X' has won
       $winnerMessage.text("X Wins!");
+	// else if 'X' did not win...
     } else {
+	  // set the winning text to indicate 'O' has won
       $winnerMessage.text("O Wins!");
     }
   }
+  // if the third column is filled with 'X' or 'O'...
   if (($box3.html() === $x && $box6.html() === $x && $box9.html() === $x) || ($box3.html() === $o && $box6.html() === $o && $box9.html() === $o)) {
+    // set winner to true
     winner = true;
+	// set the color of the winning row to green to indicate the winning row
     $box3.css('background-color', 'rgba(0,255,0,0.5)');
     $box6.css('background-color', 'rgba(0,255,0,0.5)');
     $box9.css('background-color', 'rgba(0,255,0,0.5)');
+	// if the winner is 'X' (checking one of the winning boxes will suffice)
     if ($box3.html() === $x) {
+      // set the winning text to indicate 'X' has won
       $winnerMessage.text("X Wins!");
+	// else if 'X' did not win...
     } else {
+	  // set the winning text to indicate 'O' has won
       $winnerMessage.text("O Wins!");
     }
   }
-  // if there is a winner...
+  // if winner has been set to true / if there is a winner...
   if (winner === true) {
     // alert the players there has been a winner
     alert('There has been a winner');
+	// add one to the counter so nothing else can happen
     counter += 1;
-	// Remove CSS hover color
-	$boxes.css('background-color', 'initial');
+	$boxes.each(function(index) {
+		this.removeClass('hover');
+	});
   }
   // And if all tiles have been filled...
   else if ( counter === 9 ) {
@@ -127,9 +194,11 @@ const tic = function(count, boxIndex) {
       alert('The board has been filled and there is no winner.');
       // and print out the "no one wins" message to the page
       $winnerMessage.text('Game Over - No one wins');
+	  // add one to the counter so nothing else can happen
       counter += 1;
-	  // Remove CSS hover color
-	  $boxes.css('background-color', 'initial');
+	  $boxes.each(function(index) {
+		this.removeClass('hover');
+	  });
     }
   }
 };
