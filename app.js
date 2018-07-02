@@ -19,7 +19,7 @@ const checked = [false,false,false,false,false,false,false,false,false];
 const boxids = [$box1, $box2, $box3, $box4, $box5, $box6, $box7, $box8, $box9];
 
 // Define function 'tic' and have it accept 2 parameters -> count keeps track of the number of boxes checked and boxIndex is the box number
-const tic = function(count, boxIndex) {
+const tic = function(event, count, boxIndex) {
 	// if the target of the (click) event is the correct box AND the box has not been checked...
   if (event.target == $boxes[boxIndex] && checked[boxIndex] === false) {
 	// if the count is at 0 or the count is even
@@ -212,7 +212,7 @@ $boxes.on('click', function(event){
   $boxes.each(function(index) {
     if (winner === false) {
       // Run the Tic function
-      tic(counter, index);
+      tic(event, counter, index);
     }
   });
 });
