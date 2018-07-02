@@ -205,7 +205,7 @@ const tic = function(event, count, boxIndex) {
 	  });
     }
   }
-};
+}
 
 $boxes.on('click', function(event){
   // For each box...
@@ -234,4 +234,4 @@ $rulesBtn.on('click', function() {
     // Change the up caret back to the down caret
     $('#downCaret').html('&#9660;');
   }
-})
+});
